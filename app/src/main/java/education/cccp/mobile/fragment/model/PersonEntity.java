@@ -1,17 +1,29 @@
 package education.cccp.mobile.fragment.model;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class PersonEntity {
     private Integer id;
     private String firstName;
     private String lastName;
-    private LocalDate dob;
+    private Date dob;
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("PersonEntity{");
+        sb.append("id=").append(id);
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", dob=").append(dob);
+        sb.append('}');
+        return sb.toString();
+    }
 
     public PersonEntity(Integer id,
                         String firstName,
                         String lastName,
-                        LocalDate dob) {
+                        Date dob) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -30,7 +42,7 @@ public class PersonEntity {
         return lastName;
     }
 
-    public LocalDate getDob() {
+    public Date getDob() {
         return dob;
     }
 }

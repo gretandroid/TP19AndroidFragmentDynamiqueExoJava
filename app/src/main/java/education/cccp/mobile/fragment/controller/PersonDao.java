@@ -2,48 +2,53 @@ package education.cccp.mobile.fragment.controller;
 
 
 import android.os.Build;
+import android.util.Log;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import education.cccp.mobile.fragment.model.PersonEntity;
 
 public class PersonDao {
-    static List<PersonEntity> listePersonnes =
-            new ArrayList<PersonEntity>() {
-                {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        add(new PersonEntity(
-                                1,
-                                "John",
-                                "Doe",
-                                LocalDate.now().minusYears(25)
-                        ));
-                        add(new PersonEntity(
-                                2,
-                                "Jane",
-                                "Doe",
-                                LocalDate.now().minusYears(26)
-                        ));
-                        add(new PersonEntity(
-                                3,
-                                "Karl",
-                                "Cox",
-                                LocalDate.now().minusYears(27)
-                        ));
-                        add(new PersonEntity(
-                                4,
-                                "Sidney",
-                                "Poitier",
-                                LocalDate.now().minusYears(28)
-                        ));
-                    }
-                }
-            };
+    private static final List<PersonEntity> listePersonnes = new ArrayList<>();
+
+    static {
+
+        listePersonnes.add(new PersonEntity(
+                1,
+                "John",
+                "Doe",
+                new Date()
+        ));
+        listePersonnes.add(new PersonEntity(
+                2,
+                "Jane",
+                "Doe",
+                new Date()
+        ));
+        listePersonnes.add(new PersonEntity(
+                3,
+                "Karl",
+                "Cox",
+                new Date()
+        ));
+        listePersonnes.add(new PersonEntity(
+                4,
+                "Sidney",
+                "Poitier",
+                new Date()
+        ));
+    }
 
 
     public static List<PersonEntity> getAll() {
+        Log.d(PersonDao.class.getSimpleName(), listePersonnes.get(0).toString());
         return listePersonnes;
+    }
+
+    public static int count() {
+        return listePersonnes.size();
     }
 }
