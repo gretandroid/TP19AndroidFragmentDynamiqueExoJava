@@ -8,6 +8,22 @@ public class PersonEntity {
     private String lastName;
     private Date dob;
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("PersonEntity{");

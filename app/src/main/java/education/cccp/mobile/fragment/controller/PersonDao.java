@@ -40,8 +40,16 @@ public class PersonDao {
     }
 
     public static List<PersonEntity> getAll() {
-        Log.d(PersonDao.class.getSimpleName(), listePersonnes.get(0).toString());
+//        Log.d(PersonDao.class.getSimpleName(), listePersonnes.get(0).toString());
         return listePersonnes;
+    }
+
+    public static PersonEntity findOneById(int id) {
+        PersonEntity person = null;
+        for (PersonEntity p : listePersonnes) {
+            if (p.getId() == id) person = p;
+        }
+        return person;
     }
 
     public static int count() {

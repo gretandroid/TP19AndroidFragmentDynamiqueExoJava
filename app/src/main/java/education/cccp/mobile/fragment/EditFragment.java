@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
+import education.cccp.mobile.fragment.controller.PersonDao;
 import education.cccp.mobile.fragment.model.PersonEntity;
 
 
@@ -28,7 +29,8 @@ public class EditFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(fragment_edit,
                 container,
@@ -39,9 +41,18 @@ public class EditFragment extends Fragment {
         return view;
     }
 
-    public void received(PersonEntity person) {
+    public void received(int id) {
+        PersonEntity person = PersonDao.findOneById(id);
         firstNameText.setText(person.getFirstName());
         lastNameText.setText(person.getLastName());
         dobText.setText(person.getDob().toString());
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Bundle args = getArguments();
+        int personId = args.getInt("personId");
+        received(personId);
     }
 }

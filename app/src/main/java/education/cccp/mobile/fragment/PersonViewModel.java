@@ -1,9 +1,10 @@
 package education.cccp.mobile.fragment;
 
+import static education.cccp.mobile.fragment.controller.PersonDao.getAll;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import education.cccp.mobile.fragment.model.PersonEntity;
@@ -15,7 +16,7 @@ public class PersonViewModel extends ViewModel {
     public MutableLiveData<List<PersonEntity>> getmPersons() {
         if (mPersons == null) {
             mPersons = new MutableLiveData<>();
-            mPersons.setValue(new ArrayList<>());
+            mPersons.setValue(getAll());
         }
         return mPersons;
     }

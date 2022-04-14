@@ -15,13 +15,18 @@ import java.util.List;
 
 import education.cccp.mobile.fragment.model.PersonEntity;
 
+
 public class PersonAdapter extends
         RecyclerView.Adapter<PersonAdapter.PersonViewHolder> {
 
     private List<PersonEntity> persons;
+    private OnItemEvent onItemEvent;
 
-    public PersonAdapter(List<PersonEntity> persons) {
+    public PersonAdapter(
+            List<PersonEntity> persons,
+            OnItemEvent onItemEvent) {
         this.persons = persons;
+        this.onItemEvent = onItemEvent;
     }
 
     @NonNull
@@ -41,6 +46,10 @@ public class PersonAdapter extends
         holder.firstNameRow.setText(persons.get(position).getFirstName());
         holder.lastNameRow.setText(persons.get(position).getLastName());
         holder.dobRow.setText(persons.get(position).getDob().toString());
+        holder.itemView.setOnClickListener(
+                view -> onItemEvent.onRetrievePersonId(
+                        persons.get(position).getId())
+        );
     }
 
     @Override
@@ -48,11 +57,7 @@ public class PersonAdapter extends
         return persons.size();
     }
 
-    public static class PersonViewHolder extends RecyclerView.ViewHolder {
-
-       interface OnItemEvent{
-           public Long getItemId();
-       }
+    public class PersonViewHolder extends RecyclerView.ViewHolder {
 
         private TextView firstNameRow;
         private TextView lastNameRow;
@@ -77,5 +82,9 @@ public class PersonAdapter extends
         public TextView getDobRow() {
             return dobRow;
         }
+    }
+
+    interface OnItemEvent {
+        void onRetrievePersonId(int id);
     }
 }
