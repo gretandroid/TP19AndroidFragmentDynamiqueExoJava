@@ -48,7 +48,12 @@ public class PersonAdapter extends
         return persons.size();
     }
 
-    public class PersonViewHolder extends RecyclerView.ViewHolder {
+    public static class PersonViewHolder extends RecyclerView.ViewHolder {
+
+       interface OnItemEvent{
+           public Long getItemId();
+       }
+
         private TextView firstNameRow;
         private TextView lastNameRow;
         private TextView dobRow;
