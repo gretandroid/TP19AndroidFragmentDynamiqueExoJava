@@ -13,7 +13,6 @@ public class PersonDao {
     private static final List<PersonEntity> listePersonnes = new ArrayList<>();
 
     static {
-
         listePersonnes.add(new PersonEntity(
                 1,
                 "John",
@@ -39,7 +38,6 @@ public class PersonDao {
                 new Date()
         ));
     }
-
 
     public static List<PersonEntity> getAll() {
         Log.d(PersonDao.class.getSimpleName(), listePersonnes.get(0).toString());

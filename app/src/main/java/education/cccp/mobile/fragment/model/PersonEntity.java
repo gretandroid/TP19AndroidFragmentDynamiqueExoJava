@@ -1,6 +1,5 @@
 package education.cccp.mobile.fragment.model;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 public class PersonEntity {
