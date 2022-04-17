@@ -1,7 +1,6 @@
 package education.cccp.mobile.fragment;
 
 import static education.cccp.mobile.fragment.R.layout.list_fragment;
-import static education.cccp.mobile.fragment.controller.PersonDao.getAll;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,17 +13,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
-import education.cccp.mobile.fragment.model.PersonEntity;
+import education.cccp.mobile.fragment.PersonAdapter.OnItemEvent;
 
 public class ListFragment extends Fragment
-        implements PersonAdapter.OnItemEvent {
+        implements OnItemEvent {
 
     private Activity activity;
     private PersonTransfert transfert = null;
@@ -53,7 +49,7 @@ public class ListFragment extends Fragment
         View view = inflater.inflate(list_fragment,
                 container,
                 false);
-        mViewModel.getmPersons().observe(getActivity(), personList -> {
+        mViewModel.getMPersons().observe(getActivity(), personList -> {
                     adapter = new PersonAdapter(personList, this);
                     RecyclerView recyclerView = view.findViewById(R.id.personListView);
                     recyclerView.setAdapter(adapter);
@@ -69,8 +65,7 @@ public class ListFragment extends Fragment
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         activity = (Activity) context;
-        if (activity instanceof PersonTransfert) {
+        if (activity instanceof PersonTransfert)
             transfert = (PersonTransfert) activity;
-        }
     }
 }

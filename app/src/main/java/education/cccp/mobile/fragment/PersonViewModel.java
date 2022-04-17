@@ -13,7 +13,7 @@ import education.cccp.mobile.fragment.model.PersonEntity;
 public class PersonViewModel extends ViewModel {
     private MutableLiveData<List<PersonEntity>> mPersons;
 
-    public MutableLiveData<List<PersonEntity>> getmPersons() {
+    public MutableLiveData<List<PersonEntity>> getMPersons() {
         if (mPersons == null) {
             mPersons = new MutableLiveData<>();
             mPersons.setValue(getAll());

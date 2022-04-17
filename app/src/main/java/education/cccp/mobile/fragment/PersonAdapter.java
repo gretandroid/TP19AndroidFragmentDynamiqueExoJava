@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ import education.cccp.mobile.fragment.model.PersonEntity;
 
 
 public class PersonAdapter extends
-        RecyclerView.Adapter<PersonAdapter.PersonViewHolder> {
+        Adapter<PersonAdapter.PersonViewHolder> {
 
     private List<PersonEntity> persons;
     private OnItemEvent onItemEvent;

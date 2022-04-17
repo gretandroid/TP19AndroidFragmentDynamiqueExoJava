@@ -4,8 +4,10 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import education.cccp.mobile.fragment.ListFragment.PersonTransfert;
+
 public class MainActivity extends AppCompatActivity
-        implements ListFragment.PersonTransfert {
+        implements PersonTransfert {
 
     private ListFragment listFragment;
     private EditFragment editFragment;
